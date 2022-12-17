@@ -1,7 +1,7 @@
-# Implementation of paper - Detecting_Linear_Block_Codes_via_Deep_Learning
+## Implementation of paper - Detecting_Linear_Block_Codes_via_Deep_Learning
 
 
-# Training
+## Training
 
 + Run  Train_1st_prep.py python script to train the classification algorithm for N=15 length codes (No Data Preprocessing) 
 
