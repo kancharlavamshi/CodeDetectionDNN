@@ -7,6 +7,7 @@ Run  Train_1st_prep.py python script to train the classification algorithm for N
 
 Run Train_3rd_4th_Prep.py python script to train the classification algorithm for N=15 length codes(Data processing based on the Hamming distance & inner-product)
 
+***
 
 # Citation
 
