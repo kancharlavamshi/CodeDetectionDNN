@@ -10,10 +10,11 @@
 ***
 
 # Citation
-
+```
 @article{
   title = {Detecting Linear Block Codes via Deep Learning},
   author = {Arti Yardi (IIIT Hyderabad), Vamshi Krishna Kancharla (IIIT Bangalore), Amrita Mishra(IIIT Bangalore)},
   Conference = {IEEE WCNC 2023, (IEEE Wireless Communications and Networking Conference 2023)},
   year={2023,}
   }
+```
