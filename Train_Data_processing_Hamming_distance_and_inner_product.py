@@ -2,6 +2,7 @@ import mat73
 import pandas as pd
 from third_fourth_prep import mat_f3,dat_samp,train,test_pre3,pred 
 
+#Importing .matfies
 dh_1 = mat73.loadmat('/content/Hamm_H-D_5_100_n(15)_P001_1.mat')
 db_1 = mat73.loadmat('/content/BCH_H-D_5_100_n(15)_P001_1.mat')
 
