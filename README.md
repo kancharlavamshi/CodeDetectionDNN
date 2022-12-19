@@ -3,7 +3,7 @@
 
 ## Training
 
-+ Run  Train_1st_prep.py python script to train the classification algorithm for N=15 length codes (No Data Preprocessing) 
++ Run  Train_No_Data_Preprocessing.py python script to train the classification algorithm for N=15 length codes (No Data Preprocessing) 
 
 + Run Train_Data_processing_Hamming_distance_and_inner_product.py python script to train the classification algorithm for N=15 length codes(Data processing based on the Hamming distance & inner-product)
 
