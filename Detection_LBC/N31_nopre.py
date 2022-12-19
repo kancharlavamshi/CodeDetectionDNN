@@ -13,7 +13,7 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.callbacks import ModelCheckpoint
 
-
+#Importing .matfiles to pandas DataFrame
 def mat_fun(dh,db):
   h = pd.DataFrame(dh['receivedsignalH_1'])
   h1 = h.astype('int64')
@@ -24,6 +24,7 @@ def mat_fun(dh,db):
   b1['class'] = 1
   dat=pd.concat([h1,b1],axis=0)
   return dat
+#Data concatenation
 def dat_samp_1(dat1):
   c1=dat1[dat1['class'] == 0]
   c2=dat1[dat1['class'] == 1]
@@ -43,7 +44,8 @@ def data_shuff(dat):
   df = shuffle(dat)
   x=df.drop(['class'],axis=1)
   y=df['class']
-  return x,y   
+  return x,y  
+#Model
 def model1():
   model = Sequential()
   model.add(Conv1D(filters=8, kernel_size=3, activation='relu',input_shape=(31,1)))
@@ -54,7 +56,7 @@ def model1():
   model.add(Dropout(0.10))
   model.add(Dense(1,activation='sigmoid'))
   return model
-#Train the model (e=epochs,b=batch_size,s=dataset_no.,d=dataset_batch_no.)
+#Train  (e=epochs,b=batch_size,s=dataset_no.,d=dataset_batch_no.)
 def train(dat,e,b,s,d):
   x_t,y_t=test_pre(ht_1,bt_1)
   mod=model1()
@@ -65,7 +67,7 @@ def train(dat,e,b,s,d):
   mod.save("model/"+str(s)+"_model_"+ str(d) +"P001.h5")
   return mod  
 
-    #Create Test Data 
+#Create Test Data 
 def test_pre(dh,db):
   dat=mat_f(dh,db)
   x=dat.drop(['class'],axis=1)
