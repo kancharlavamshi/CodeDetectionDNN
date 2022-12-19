@@ -4,7 +4,7 @@ import mat73
 import pandas as pd
 from N15_nopre import mat_f,dat_samp,train,test_pre,pred 
 
-
+#Importing .matfies
 dh_1 = mat73.loadmat('/content/Hamm_RE_n_15_100_10k_1.mat')
 db_1 = mat73.loadmat('/content/BCH_RE_n_15_100_10k_1.mat')
 
