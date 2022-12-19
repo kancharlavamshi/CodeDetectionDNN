@@ -27,7 +27,7 @@ def mapp3(data):
   
   df = pd.DataFrame(df)
   return df
-
+#Importing .matfiles to pandas DataFrame
 def mat_f3(dh,db):
   h1=mapp3(dh)
   h1['class'] = 0
@@ -35,7 +35,7 @@ def mat_f3(dh,db):
   b1['class'] = 1
   dat=pd.concat([h1,b1],axis=0)
   return dat  
-
+#Importing .matfiles to pandas DataFrame
 def mat_f4(dh,db):
   h1=mapp4(dh)
   h1['class'] = 0
@@ -45,7 +45,7 @@ def mat_f4(dh,db):
   return dat 
 
 
-
+#Data Concatenation
 def dat_samp(dat1):
   c1=dat1[dat1['class'] == 0]
   c2=dat1[dat1['class'] == 1]
@@ -75,7 +75,7 @@ def one_h(dat):
   y=dat['class']
   #y = keras.utils.to_categorical(y, 2)
   return x,y
-
+#Prediction
 def pred(model,x_t,y_t):
   pred_1 = (model.predict(x_t) > 0.5).astype(int)
   acc = accuracy_score(y_t, pred_1)
@@ -92,20 +92,21 @@ def train(dat,e,b):
   x,y = one_h(dat)
   mod.fit(x, y,batch_size=b, epochs=e,verbose=0)
   return mod
-
+#Test
 def test_pre3(dh,db):
   dat=mat_f3(dh,db)
   x=dat.drop(['class'],axis=1)
   y=dat['class']
   #y = keras.utils.to_categorical(y, 2)
   return x,y  
+#Test
 def test_pre4(dh,db):
   dat=mat_f4(dh,db)
   x=dat.drop(['class'],axis=1)
   y=dat['class']
   #y = keras.utils.to_categorical(y, 2)
   return x,y  
-
+#Importing .matfiles to pandas DataFrame
 def mat_f(dh,db):
   h1=mapp(dh)
   h1['class'] = 0
