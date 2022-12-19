@@ -13,7 +13,7 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.callbacks import ModelCheckpoint
 
-
+#Importing .matfiles to pandas DataFrame
 def mat_f(dh,db):
   h = pd.DataFrame(dh['receivedsignalH_1'])
   h1 = h.astype('int64')
@@ -25,6 +25,7 @@ def mat_f(dh,db):
   dat=pd.concat([h1,b1],axis=0)
   return dat
 
+#Data concatenation
 def dat_samp(dat1):
   c1=dat1[dat1['class'] == 0]
   c2=dat1[dat1['class'] == 1]
@@ -39,7 +40,7 @@ def dat_samp(dat1):
   d9=pd.concat([c1[7500:11500],c2[7500:11500]])
   d10=pd.concat([c1[11500:16500],c2[11500:16500]])
   return d1,d2,d3,d4,d5,d6,d7,d8,d9,d10  
-  
+#Data shuffle   
 def data_pre(dat):
   df = shuffle(dat)
   x=df.drop(['class'],axis=1)
@@ -56,7 +57,7 @@ def model1():
   model.add(Dropout(0.20))
   model.add(Dense(1,activation='sigmoid'))
   return model  
-
+#Train
 def train(dat,e,b,s,d):
   mod=model1()
   checkpointer = ModelCheckpoint(filepath="model/"+str(s)+"_model_best_"+ str(d) +"P001.h5", monitor='accuracy',mode='max',verbose=1, save_best_only=True)
@@ -66,13 +67,13 @@ def train(dat,e,b,s,d):
   mod.fit(x, y,batch_size=b, epochs=e,callbacks=[checkpointer],verbose=1)
   mod.save("model/"+str(s)+"_model_"+ str(d) +"P001.h5")
   return mod
-
+#Test
 def test_pre(dh,db):
   dat=mat_f(dh,db)
   x=dat.drop(['class'],axis=1)
   y=dat['class']
   return x,y 
-
+#Prediction
 def pred(model,x_t,y_t):
   pred_1 = (model.predict(x_t) > 0.5).astype(int)
   acc = accuracy_score(y_t, pred_1)
