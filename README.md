@@ -1,6 +1,11 @@
 ## Implementation of paper - Detecting_Linear_Block_Codes_via_Deep_Learning
 
 
+### Dataset Generation
+we have generated dataset in a stepwise (for example N=15 No preprocessing  100,200,..1k,2k,...5k. for each type of codeword) and saved this stepwise dataset in a Matlab file(.matfile).Then we used .mat73 package to import this .matfiles to pandas dataframe in python to train the NN classifier
+
+
+
 ## Training
 
 + Run  Train_No_Data_Preprocessing.py python script to train the classification algorithm for N=15 length codes (No Data Preprocessing) 
