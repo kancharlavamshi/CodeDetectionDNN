@@ -2,15 +2,15 @@
 ## Import Data Files
 import mat73
 import pandas as pd
-from N15_nopre import mat_f,dat_samp,train,test_pre,pred 
+from N15_nopre import matlab_file_import,data_concatenation,train,import_test_data,Prediction 
 
 #Importing .matfies
 Hamming_train_data = mat73.loadmat('/content/Hamm_RE_n_15_100_10k_1.mat')
 Bch_train_data = mat73.loadmat('/content/BCH_RE_n_15_100_10k_1.mat')
 
-Data = mat_f(Hamming_train_data,Bch_train_data)
+Data = matlab_file_import(Hamming_train_data,Bch_train_data)
 
-d1,d2,d3,d4,d5,d6,d7,d8,d9,d10 = dat_samp(Data)
+d1,d2,d3,d4,d5,d6,d7,d8,d9,d10 = data_concatenation(Data)
 #uncomment if you want to check the dataset shape 
 ##d1.shape,d2.shape,d3.shape,d4.shape,d5.shape,d6.shape,d7.shape,d8.shape,d9.shape,d10.shape
 
@@ -36,7 +36,7 @@ model_10=train(d10,e,b,'set1','10')
 Hamming_test_data = mat73.loadmat('/content/Hamm_RE_n_15_100_10k_test-1.mat')
 Bch_test_data = mat73.loadmat('/content/BCH_RE_n_15_100_10k_test-1.mat')
 
-codeword,label=test_pre(Hamming_test_data,Bch_test_data)
+codeword,label=import_test_data(Hamming_test_data,Bch_test_data)
 
 accuracy_model_1=pred(model_1,codeword,label)
 accuracy_model_2=pred(model_,codeword,label)
