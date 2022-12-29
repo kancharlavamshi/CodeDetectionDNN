@@ -1,4 +1,5 @@
 import pandas as pd
+import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Flatten
 from keras.layers.convolutional import Conv1D
@@ -9,7 +10,6 @@ from sklearn.metrics import confusion_matrix
 from tensorflow.keras.optimizers import Adam
 from sklearn.metrics import accuracy_score
 from sklearn.utils import shuffle
-import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.callbacks import ModelCheckpoint
 
@@ -40,8 +40,9 @@ def dat_samp(dat1):
   d9=pd.concat([c1[7500:11500],c2[7500:11500]])
   d10=pd.concat([c1[11500:16500],c2[11500:16500]])
   return d1,d2,d3,d4,d5,d6,d7,d8,d9,d10  
+
 #Data shuffle-shuffle the dataset before training NN    
-def data_pre(dat):
+def data_shuffle(dat):
   df = shuffle(dat)
   x=df.drop(['class'],axis=1)
   y=df['class']
@@ -57,22 +58,25 @@ def model1():
   model.add(Dropout(0.20))
   model.add(Dense(1,activation='sigmoid'))
   return model  
+
 ## Training - here we will take model along with input data, no.of epoches,batch sie,set no.,dataset no. and save the model using checkpointer for the best model
 def train(dat,e,b,s,d):
   mod=model1()
   checkpointer = ModelCheckpoint(filepath="model/"+str(s)+"_model_best_"+ str(d) +"P001.h5", monitor='accuracy',mode='max',verbose=1, save_best_only=True)
   opt1=Adam(learning_rate=0.001)
   mod.compile(loss='binary_crossentropy', optimizer=opt1, metrics=['accuracy'])
-  x,y = data_pre(dat)
+  x,y = data_shuffle(dat)
   mod.fit(x, y,batch_size=b, epochs=e,callbacks=[checkpointer],verbose=1)
   mod.save("model/"+str(s)+"_model_"+ str(d) +"P001.h5")
   return mod
+
 #Test-Importing test data for prediction
 def import_test_data(dh,db):
   dat=matlab_file_import(dh,db)
   x=dat.drop(['class'],axis=1)
   y=dat['class']
   return x,y 
+
 ##Prediction of Test Data
 def Prediction(model,x_t,y_t):
   pred_1 = (model.predict(x_t) > 0.5).astype(int)
