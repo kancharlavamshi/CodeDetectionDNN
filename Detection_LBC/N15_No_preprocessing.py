@@ -60,13 +60,13 @@ def model1():
   return model  
 
 ## Training - here we will take model along with input data, no.of epoches,batch sie,set no.,dataset no. and save the model using checkpointer for the best model
-def train(dat,e,b,s,d):
+def train(dat,Epochs,Batch_size,s,d):
   mod=model1()
   checkpointer = ModelCheckpoint(filepath="model/"+str(s)+"_model_best_"+ str(d) +"P001.h5", monitor='accuracy',mode='max',verbose=1, save_best_only=True)
   opt1=Adam(learning_rate=0.001)
   mod.compile(loss='binary_crossentropy', optimizer=opt1, metrics=['accuracy'])
   x,y = data_shuffle(dat)
-  mod.fit(x, y,batch_size=b, epochs=e,callbacks=[checkpointer],verbose=1)
+  mod.fit(x, y,batch_size=Batch_size, epochs=Epochs,callbacks=[checkpointer],verbose=1)
   mod.save("model/"+str(s)+"_model_"+ str(d) +"P001.h5")
   return mod
 
