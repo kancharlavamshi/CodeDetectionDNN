@@ -14,7 +14,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.callbacks import ModelCheckpoint
 import numpy as np
 
-  ## Mapping the data
+  ## Mapping the data (0,1) to vector  
 def mapp3(data):
   h=pd.DataFrame(data['dist_h'])
   data=np.array(h)
@@ -45,7 +45,7 @@ def mat_f4(dh,db):
   return dat 
 
 
-#Data Concatenation
+#Data Concatenation- we have generated the dataset(.matfile) in a stepwise so we need arrange the dataset in stepwise before training NN model
 def dat_samp(dat1):
   c1=dat1[dat1['class'] == 0]
   c2=dat1[dat1['class'] == 1]
@@ -62,7 +62,7 @@ def dat_samp(dat1):
   #d11=pd.concat([c1[181:1181],c2[181:1181]])
   return d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,#d11
 
-## Model
+## Proposed NN Model
 def model1():
   model = Sequential()
   model.add(Dense(5, activation='relu',input_dim=5))
@@ -75,7 +75,7 @@ def one_h(dat):
   y=dat['class']
   #y = keras.utils.to_categorical(y, 2)
   return x,y
-#Prediction
+#Prediction of Test Data
 def pred(model,x_t,y_t):
   pred_1 = (model.predict(x_t) > 0.5).astype(int)
   acc = accuracy_score(y_t, pred_1)
@@ -84,7 +84,7 @@ def pred(model,x_t,y_t):
     #acc = accuracy_score(y_t, y_cls_1)  
   return acc
 
-## Training
+## Training - here we will take model along with input data, no.of epoches,batch sie 
 def train(dat,e,b):
   mod=model1()
   opt1=Adam(learning_rate=0.001)
@@ -92,14 +92,14 @@ def train(dat,e,b):
   x,y = one_h(dat)
   mod.fit(x, y,batch_size=b, epochs=e,verbose=0)
   return mod
-#Test
+#Test-Importing test data for prediction(Hamming_distance_process)
 def test_pre3(dh,db):
   dat=mat_f3(dh,db)
   x=dat.drop(['class'],axis=1)
   y=dat['class']
   #y = keras.utils.to_categorical(y, 2)
   return x,y  
-#Test
+#Test-Importing test data for prediction(Inner_product_process)
 def test_pre4(dh,db):
   dat=mat_f4(dh,db)
   x=dat.drop(['class'],axis=1)
@@ -115,7 +115,7 @@ def mat_f(dh,db):
   b1['class'] = 1
   dat=pd.concat([h1,b1],axis=0)
   return dat  
-  ## Mapping the data
+  ## Mapping the data (0,1) to vector  
 def mapp4(data):
   h=pd.DataFrame(data['dist_4'])
   data=np.array(h)
