@@ -28,7 +28,7 @@ def mapp3(data):
   df = pd.DataFrame(df)
   return df
 #Importing .matfiles to pandas DataFrame
-def mat_f3(dh,db):
+def  matlab_file_import_3(dh,db):
   h1=mapp3(dh)
   h1['class'] = 0
   b1=mapp3(db)
@@ -36,7 +36,7 @@ def mat_f3(dh,db):
   dat=pd.concat([h1,b1],axis=0)
   return dat  
 #Importing .matfiles to pandas DataFrame
-def mat_f4(dh,db):
+def  matlab_file_import_4(dh,db):
   h1=mapp4(dh)
   h1['class'] = 0
   b1=mapp4(db)
@@ -76,7 +76,7 @@ def one_h(dat):
   #y = keras.utils.to_categorical(y, 2)
   return x,y
 #Prediction of Test Data
-def pred(model,x_t,y_t):
+def Prediction(model,x_t,y_t):
   pred_1 = (model.predict(x_t) > 0.5).astype(int)
   acc = accuracy_score(y_t, pred_1)
     #pred_1 = model.predict(x_t) 
@@ -85,29 +85,29 @@ def pred(model,x_t,y_t):
   return acc
 
 ## Training - here we will take model along with input data, no.of epoches,batch sie 
-def train(dat,e,b):
+def train(dat,Epochs,Batch_size):
   mod=model1()
   opt1=Adam(learning_rate=0.001)
   mod.compile(loss='binary_crossentropy', optimizer=opt1, metrics=['accuracy'])
   x,y = one_h(dat)
-  mod.fit(x, y,batch_size=b, epochs=e,verbose=0)
+  mod.fit(x, y,batch_size=Batch_size, epochs=Epochs,verbose=0)
   return mod
 #Test-Importing test data for prediction(Hamming_distance_process)
-def test_pre3(dh,db):
+def import_test_data_3(dh,db):
   dat=mat_f3(dh,db)
   x=dat.drop(['class'],axis=1)
   y=dat['class']
   #y = keras.utils.to_categorical(y, 2)
   return x,y  
 #Test-Importing test data for prediction(Inner_product_process)
-def test_pre4(dh,db):
+def import_test_data_4(dh,db):
   dat=mat_f4(dh,db)
   x=dat.drop(['class'],axis=1)
   y=dat['class']
   #y = keras.utils.to_categorical(y, 2)
   return x,y  
 #Importing .matfiles to pandas DataFrame
-def mat_f(dh,db):
+def matlab_file_import(dh,db):
   h1=mapp(dh)
   h1['class'] = 0
 
