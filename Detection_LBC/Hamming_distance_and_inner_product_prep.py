@@ -46,7 +46,7 @@ def  matlab_file_import_4(dh,db):
 
 
 #Data Concatenation- we have generated the dataset(.matfile) in a stepwise so we need arrange the dataset in stepwise before training NN model
-def dat_samp(dat1):
+def data_concatenation(dat1):
   c1=dat1[dat1['class'] == 0]
   c2=dat1[dat1['class'] == 1]
   d1=pd.concat([c1[:10],c2[:10]])
