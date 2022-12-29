@@ -20,3 +20,6 @@ we have generated dataset in a stepwise (for example N=15 No_preprocessing  100,
 
 Arti Yardi (IIIT Hyderabad), Vamshi Krishna Kancharla (IIIT Bangalore), Amrita Mishra(IIIT Bangalore) "Detecting Linear Block Codes via Deep Learning", IEEE Wireless Communications and Networking Conference (WCNC), 2023.
 
+#Code & Implementation - Vamshi Krishna Kancharla
+#Idea Proposed - Arti Yardi 
+#Guidence-Amrita Mishra
