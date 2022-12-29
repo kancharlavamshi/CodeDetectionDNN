@@ -11,24 +11,23 @@ Bch_train_data = mat73.loadmat('/content/BCH_RE_n_15_100_10k_1.mat')
 Data = matlab_file_import(Hamming_train_data,Bch_train_data)
 
 d1,d2,d3,d4,d5,d6,d7,d8,d9,d10 = data_concatenation(Data)
-#uncomment if you want to check the dataset shape 
-##d1.shape,d2.shape,d3.shape,d4.shape,d5.shape,d6.shape,d7.shape,d8.shape,d9.shape,d10.shape
 
 
-epochs=10  ## no.of epochs
-batch_size=3   ## batch_size
+
+Epochs=10  ## no.of epochs
+Batch_size=3   ## batch_size
 
 # Training 
-model_1=train(d1,e,b,'set1','1')
-model_2=train(d2,e,b,'set1','2')
-model_3=train(d3,e,b,'set1','3')
-model_4=train(d4,e,b,'set1','4')
-model_5=train(d5,e,b,'set1','5')
-model_6=train(d6,e,b,'set1','6')
-model_7=train(d7,e,b,'set1','7')
-model_8=train(d8,e,b,'set1','8')
-model_9=train(d9,e,b,'set1','9')
-model_10=train(d10,e,b,'set1','10')
+model_1=train(d1,Epochs,Batch_size,'set1','1')
+model_2=train(d2,Epochs,Batch_size,'set1','2')
+model_3=train(d3,Epochs,Batch_size,'set1','3')
+model_4=train(d4,Epochs,Batch_size,'set1','4')
+model_5=train(d5,Epochs,Batch_size,'set1','5')
+model_6=train(d6,Epochs,Batch_size,'set1','6')
+model_7=train(d7,Epochs,Batch_size,'set1','7')
+model_8=train(d8,Epochs,Batch_size,'set1','8')
+model_9=train(d9,Epochs,Batch_size,'set1','9')
+model_10=train(d10,Epochs,Batch_size,'set1','10')
 
 
 ##Testing
