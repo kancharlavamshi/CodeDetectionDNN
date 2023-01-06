@@ -1,6 +1,6 @@
 import mat73
 import pandas as pd
-from third_fourth_prep import  matlab_file_import_3,data_concatenation,train,import_test_data_3,Prediction 
+from Hamming_distance_and_inner_product_prep import  matlab_file_import_3,data_concatenation,train,import_test_data_3,Prediction 
 
 #Importing .matfies
 Hammining_train_data  = mat73.loadmat('/content/Hamm_H-D_5_100_n(15)_P001_1.mat')
