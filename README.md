@@ -1,4 +1,4 @@
-## Implementation of paper - Detecting_Linear_Block_Codes_via_Deep_Learning
+## Implementation of paper - Detecting_Linear_Block_Codes_via_Deep_Learning[Paper](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=KGMPrJUAAAAJ&citation_for_view=KGMPrJUAAAAJ:d1gkVwhDpl0C)
 
 
 ### Dataset Generation
