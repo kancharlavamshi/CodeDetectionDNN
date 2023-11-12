@@ -1,3 +1,4 @@
+# Import necessary libraries
 import pandas as pd
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Flatten
